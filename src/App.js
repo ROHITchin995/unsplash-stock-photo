@@ -1,6 +1,7 @@
 import './App.css';
 import { FaSearch } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Photo from './Photo';
 
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 const mainUrl = `https://api.unsplash.com/photos/`;
@@ -12,6 +13,8 @@ function App() {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
   const [newImages, setNewImages] = useState(false);
+
+  const mounted = useRef(false);
 
   const fetchImages = async () => {
     setLoading(true);
